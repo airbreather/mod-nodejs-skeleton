@@ -1,0 +1,15 @@
+{
+	"name": "mod-nodejs-skeleton",
+	"version": "0.0.0",
+	"description": "A Node.js-based module for AzerothCore that kept this default description from the skeleton project.",
+	"scripts": {
+		"build": "tsc --outdir ./.temp && esbuild ./.temp/index.js --bundle --platform=node --format=esm --external:long --sourcemap=inline --outdir=./out",
+		"watch": "tsc --outdir ./.temp --watch & esbuild ./.temp/index.js --bundle --platform=node --format=esm --external:long --sourcemap=inline --outdir=./out --watch"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@airbreather/mod-nodejs-types": "file:../azerothcore-wotlk/modules/mod-nodejs/typescript",
+		"esbuild": "^0.28.1",
+		"typescript": "^7.0.2"
+	}
+}
