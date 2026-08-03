@@ -16,6 +16,7 @@
 		"strict": true,
 		"noFallthroughCasesInSwitch": false,
 		"isolatedModules": false,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"rewriteRelativeImportExtensions": true
 	}
 }

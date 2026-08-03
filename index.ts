@@ -2,8 +2,9 @@
 // instead, since that will get you all the enums and records in addition to the Acore namespace.
 //
 // if you want to split your OWN app into multiple script files, that's perfectly fine! just import
-// from './path/to/script.js' instead of just from './path/to/script' because of a weird quirk of
-// what I had to do to get the const enums working properly.
+// from './path/to/script.ts' instead of just './path/to/script'. otherwise, `npm run watch` will
+// give you no errors, then it will fail at runtime. this is because ESM imports from other files in
+// Node.js require file extensions, not - it seems - anything that I've done too incorrectly.
 let onlinePlayersWhoseNamesStartWithB: Record<string, number> = {};
 
 // event names roughly follow the convention of "script:method", e.g., the "player:login" event is

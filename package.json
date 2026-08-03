@@ -4,7 +4,7 @@
 	"description": "A Node.js-based module for AzerothCore that kept this default description from the skeleton project.",
 	"scripts": {
 		"build": "tsc --outdir ./.temp && esbuild ./.temp/index.js --bundle --platform=node --format=esm --sourcemap=linked --minify --outdir=./dist",
-		"watch": "tsc --outdir ./.temp --watch & esbuild ./.temp/*.js --platform=node --format=esm --sourcemap=inline --outdir=./out --watch"
+		"watch": "tsc --outdir ./out --watch"
 	},
 	"type": "module",
 	"devDependencies": {
