@@ -7,8 +7,7 @@
 		"inlineSources": true,
 		"types": [
 			"@airbreather/mod-nodejs-types",
-			"@types/node",
-			"long"
+			"@types/node"
 		],
 		"resolveJsonModule": true,
 		"strict": true,
