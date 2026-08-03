@@ -2,11 +2,9 @@
 	"compilerOptions": {
 		"target": "ESNext",
 		"lib": ["ESNext"],
-		"module": "preserve",
+		"module": "nodenext",
 		"sourceMap": true,
 		"inlineSources": true,
-		"moduleResolution": "bundler",
-		"moduleDetection": "force",
 		"types": [
 			"@airbreather/mod-nodejs-types",
 			"@types/node",

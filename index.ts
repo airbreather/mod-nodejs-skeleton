@@ -1,10 +1,11 @@
 // notice: no imports up here. you should put @airbreather/mod-nodejs-types into your tsconfig.json
 // instead, since that will get you all the enums and records in addition to the Acore namespace.
 //
-// if you want to split your OWN app into multiple script files, that's perfectly fine! just import
-// from './path/to/script.ts' instead of just './path/to/script'. otherwise, `npm run watch` will
-// give you no errors, then it will fail at runtime. this is because ESM imports from other files in
-// Node.js require file extensions, not - it seems - anything that I've done too incorrectly.
+// if you want to split your OWN app into multiple script files, that's perfectly fine! import them
+// here. it might save you a bit of searching for me to say here that you will need to import from
+// './path/to/other/file.ts' instead of just './path/to/other/file'. there's a tsconfig.json tweak
+// that can bypass TypeScript's errors for this, but the import will fail at runtime if you're using
+// `npm run watch`.
 let onlinePlayersWhoseNamesStartWithB: Record<string, number> = {};
 
 // event names roughly follow the convention of "script:method", e.g., the "player:login" event is
