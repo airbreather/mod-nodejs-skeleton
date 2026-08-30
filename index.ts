@@ -33,8 +33,8 @@ Acore.hooks.addListener('player:login', (args) => {
 	if (args.player.name.startsWith('B')) {
 		args.player.sendSystemMessage('A special greeting to you, whose name starts with B!');
 		// we're always comparing players with other players, so we only need their counter values.
-		// since those are numbers that we can easily compare, we just do this decoding in advance.
-		onlinePlayersWhoseNamesStartWithB[args.player.name] = Acore.decodeGuid(args.player.guid)[2];
+		// since we need to JSON.stringify / JSON.parse them, we just do this decoding in advance.
+		onlinePlayersWhoseNamesStartWithB[args.player.name] = args.player.guidCounter;
 	}
 });
 
@@ -72,7 +72,7 @@ Acore.hooks.addListener('player:before-send-chat-message', (args) => {
 		// just like writing to the reference in C++.
 		args.msg = `B${args.msg}B`;
 		// cache a couple of lookups that we're going to do in a loop
-		const [_high, _entry, playerId] = Acore.decodeGuid(args.player.guid);
+		const playerId = args.player.guidCounter;
 		const sysMessageToBroadcast = `I just changed a message from ${args.player.name}... don't tell them...`;
 		for (const otherPlayerId of Object.values(onlinePlayersWhoseNamesStartWithB)) {
 			if (playerId !== otherPlayerId) {

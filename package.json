@@ -8,8 +8,8 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"@airbreather/mod-nodejs-types": "^0.0.3",
-		"esbuild": "^0.28.1",
+		"@airbreather/mod-nodejs-types": "^0.0.17",
+		"esbuild": "^0.28.2",
 		"typescript": "^7.0.2"
 	}
 }
