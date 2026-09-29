@@ -15,7 +15,7 @@ Acore.hooks.addListener('nodejs:before-shutdown', (args) => {
 	// args for this hook before the Node.js environment is replaced by a shiny fresh new one. that
 	// string can be seen in the 'nodejs:startup' hook on the NEW environment.
 	if (args.reloading) {
-		args.persistData = JSON.stringify(onlinePlayersWhoseNamesStartWithB);
+		args.persistData.set(JSON.stringify(onlinePlayersWhoseNamesStartWithB));
 	}
 });
 
@@ -54,7 +54,7 @@ Acore.hooks.addListener('player:before-send-chat-message', (args) => {
 	// the Node.js environment starts up, it puts a link in the console. I can click on that link to
 	// start immediately debugging in the same window where I'm already debugging the main app, and
 	// I can bounce back and forth between breakpoints in both the script and the server.
-	switch (args.type) {
+	switch (args.type.get()) {
 		case ChatMsg.CHAT_MSG_SAY:
 		case ChatMsg.CHAT_MSG_CHANNEL:
 		case ChatMsg.CHAT_MSG_YELL:
@@ -68,9 +68,9 @@ Acore.hooks.addListener('player:before-send-chat-message', (args) => {
 			return;
 	}
 	if (args.player.name in onlinePlayersWhoseNamesStartWithB) {
-		// for hooks, anything on 'args' that TypeScript lets you modify it
+		// for hooks, anything on 'args' that's an Acore.Box<T> lets you modify it
 		// just like writing to the reference in C++.
-		args.msg = `B${args.msg}B`;
+		args.msg.set(`B${args.msg}B`);
 		// cache a couple of lookups that we're going to do in a loop
 		const playerId = args.player.guidCounter;
 		const sysMessageToBroadcast = `I just changed a message from ${args.player.name}... don't tell them...`;
